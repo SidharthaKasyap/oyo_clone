@@ -1,8 +1,26 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Block from "./Block";
+import Link from "next/link";
+import Cookies from "js-cookie";
 
 const Header1 = () => {
+  const [auth, setAuth] = useState(false);
+  useEffect(() => {
+    const key = Cookies.get("user");
+    if (key) {
+      setAuth(true);
+      return;
+    }
+    setAuth(false);
+  }, [auth]);
+
+  const handleLogout = () => {
+    Cookies.remove("user");
+    setAuth(false);
+    router.push("/");
+  };
+
   return (
     <div className=" flex justify-between border-b-2 border-gray-300 items-center h-20 px-12">
       <Image
@@ -28,7 +46,15 @@ const Header1 = () => {
             height={200}
             className=" w-7 h-7 rounded-full mr-2 "
           />
-          <h3>Login / Signup</h3>
+          {auth ? (
+            <h3 className=" cursor-pointer" onClick={handleLogout}>
+              Logout
+            </h3>
+          ) : (
+            <Link href={"/login"}>
+              <h3>Login / Signup</h3>
+            </Link>
+          )}
         </div>
       </div>
     </div>
