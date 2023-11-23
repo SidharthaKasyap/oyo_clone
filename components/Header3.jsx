@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 const Header3 = () => {
+  const [city, setCity] = useState(" ");
   return (
     <div className="bg-gradient-to-r from-red-600 to-red-400 h-60">
       <div className="p-5">
@@ -14,9 +15,9 @@ const Header3 = () => {
             type="text"
             placeholder="Search..."
             className=" w-50  h-14 outline-none px-3 text-lg border-r-2 border-gray-400 "
-            // onChange={(e) => {
-            //   setCity(e.target.value);
-            // }}
+            onChange={(e) => {
+              setCity(e.target.value);
+            }}
           />
           <input
             type="date"
@@ -32,7 +33,7 @@ const Header3 = () => {
             type="submit"
             className=" h-14 px-3 py-2 w-52 bg-green-500 hover:cursor-pointer hover:bg-green-600 text-white text-xl"
           >
-            <Link href={`/hotels?city=${""}`}>Search</Link>
+            <Link href={`/hotels?city=${city}`}>Search</Link>
           </button>
         </div>
         <div className="flex px-32  font-b0ld">
