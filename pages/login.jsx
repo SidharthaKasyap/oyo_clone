@@ -40,6 +40,11 @@ const Login = () => {
         email,
         password,
       });
+      if (res?.data) {
+        Cookies.set("user", res.data.token, { expires: 7 });
+        alert(res.data.msg);
+        router.back();
+      }
     } catch (error) {
       console.log(error);
     }
