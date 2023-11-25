@@ -9,8 +9,9 @@ const nextConfig = {
       "i.pinimg.com",
       "www.symbols.com",
       "cdn.pixabay.com",
+      "play-lh.googleusercontent.com",
     ],
   },
 };
 
-module.exports = nextConfig
+module.exports = nextConfig;
